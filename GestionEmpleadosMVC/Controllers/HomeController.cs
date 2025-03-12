@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using System.Diagnostics;
 using GestionEmpleadosMVC.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -6,15 +7,28 @@ namespace GestionEmpleadosMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly String ConnectionString;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration configuration)
         {
-            _logger = logger;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public IActionResult Index()
         {
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConnectionString))
+                {
+                    cnn.Open();
+                    ViewBag.Mensaje = "Conexión exitosa!";
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Error al conectar: " + ex.Message;
+            }
             return View();
         }
 

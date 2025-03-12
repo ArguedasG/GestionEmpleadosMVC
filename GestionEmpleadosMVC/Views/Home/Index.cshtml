@@ -1,5 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Prueba de Conexión";
+}
+
+<h2>Prueba de Conexión</h2>
+@if (ViewBag.Mensaje != null)
+{
+    <p style="color: green;">@ViewBag.Mensaje</p>
+}
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
 }
 
 <div class="text-center">
