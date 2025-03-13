@@ -2,7 +2,7 @@
 
 namespace GestionEmpleadosMVC.Models
 {
-    public class EmpleadoModel
+    public class Empleado
     {
         public int id { get; set; }
         public string Nombre { get; set; }
