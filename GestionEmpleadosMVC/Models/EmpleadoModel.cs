@@ -55,14 +55,14 @@ public class EmpleadoModel
             command.Parameters.AddWithValue("@Nombre", nombre);
             command.Parameters.AddWithValue("@Salario", salario);
 
-            SqlParameter = new SqlParameter("@Resultado", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter Resultado = new SqlParameter("@Resultado", SqlDbType.Int) { Direction = ParameterDirection.Output };
             command.Parameters.Add(Resultado);
 
-            cmd.connection = connection;
             connection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
         }
-        return (int)cmd.Parameters["@Resultado"].Value;
+        return (int)command.Parameters["@Resultado"].Value; 
+
     }
 
 }
