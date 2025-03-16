@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
 public class Empleado
@@ -20,11 +22,33 @@ public class EmpleadoModel
     public List<Empleado> ObtenerEmpleados() 
     {
         List<Empleado> empleados = new List<Empleado>();
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            SqlCommand command = new SqlCommand("sp_GetEmplados", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                empleados.Add(new Empleado
+                {
+                    id = Convert.ToInt32(reader["id"]),
+                    Nombre = reader["Nombre"].ToString(),
+                    Salario = (SqlMoney)reader["Salario"]
+                });
+            }
+        }
         return empleados;
     }
 
     public int InsertarEmpleado(string nombre, SqlMoney salario)
     {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+
+        }
         return 0;
     }
 
