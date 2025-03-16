@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Data.SqlTypes;
+using System.Diagnostics.Eventing.Reader;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -28,16 +30,18 @@ namespace GestionEmpleadosMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(string Nombre, SqlMoney Salario)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
+            int Resultado = empleado.InsertarEmpleado(Nombre, 0);
+
+            if (Resultado == 50001) {
+                ViewBag.Error = "El nombre ya esta en uso";
             }
-            catch
-            {
-                return View();
+            else { 
+                ViewBag.Message = "Empleado creado con exito";
             }
+
+            return View();
         }
     }
 }
