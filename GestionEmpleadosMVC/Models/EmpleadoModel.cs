@@ -60,9 +60,10 @@ public class EmpleadoModel
 
             connection.Open();
             command.ExecuteNonQuery();
-        }
-        return (int)command.Parameters["@Resultado"].Value; 
 
+            return (int)Resultado.Value;
+        }
+         
     }
 
 }
