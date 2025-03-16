@@ -24,7 +24,7 @@ public class EmpleadoModel
         List<Empleado> empleados = new List<Empleado>();
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            SqlCommand command = new SqlCommand("sp_GetEmplados", connection);
+            SqlCommand command = new SqlCommand("sp_GetEmpleados", connection);
             command.CommandType = CommandType.StoredProcedure;
 
             connection.Open();
