@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Security.Cryptography;
 
 public class Empleado
 {
@@ -40,7 +41,7 @@ public class EmpleadoModel
                 });
             }
         }
-
+         
         return empleados;
     }
 
@@ -48,9 +49,20 @@ public class EmpleadoModel
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
+            SqlCommand command = new SqlCommand("sp_InsertEmpleado", connection);
+            command.CommandType = CommandType.StoredProcedure;
 
+            command.Parameters.AddWithValue("@Nombre", nombre);
+            command.Parameters.AddWithValue("@Salario", salario);
+
+            SqlParameter = new SqlParameter("@Resultado", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            command.Parameters.Add(Resultado);
+
+            cmd.connection = connection;
+            connection.Open();
+            cmd.ExecuteNonQuery();
         }
-        return 0;
+        return (int)cmd.Parameters["@Resultado"].Value;
     }
 
 }

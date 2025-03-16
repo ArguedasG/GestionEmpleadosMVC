@@ -18,7 +18,7 @@ namespace GestionEmpleadosMVC.Controllers
         public IActionResult Index()
         {
             List<Empleado> empleados = empleado.ObtenerEmpleados();
-            return View();
+            return View(empleados);
         }
 
         public IActionResult Create()
