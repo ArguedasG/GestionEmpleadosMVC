@@ -32,7 +32,7 @@ namespace GestionEmpleadosMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(string Nombre, SqlMoney Salario)
         {
-            int Resultado = empleado.InsertarEmpleado(Nombre, 0);
+            int Resultado = empleado.InsertarEmpleado(Nombre, Salario);
 
             if (Resultado == 50001) {
                 ViewBag.Error = "El nombre ya esta en uso";
