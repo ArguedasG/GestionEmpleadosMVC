@@ -1,11 +1,19 @@
-﻿using System.Data.SqlTypes;
+﻿using Microsoft.Extensions.Configuration;
+using System.Data.SqlTypes;
 
-namespace GestionEmpleadosMVC.Models
+public class Empleado
 {
-    public class Empleado
+    public int id { get; set; }
+    public string Nombre { get; set; }
+    public SqlMoney Salario { get; set; }
+}
+
+public class EmpleadoModel
+{
+    private readonly string connectionString;
+
+    public EmpleadoModel(IConfiguration configuration)
     {
-        public int id { get; set; }
-        public string Nombre { get; set; }
-        public SqlMoney Salario { get; set; }
+        connectionString = configuration.GetConnectionString("DefaultConnection");
     }
 }
