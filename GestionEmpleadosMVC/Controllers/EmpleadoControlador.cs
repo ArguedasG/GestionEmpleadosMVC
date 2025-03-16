@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace GestionEmpleadosMVC.Controllers
 {
     public class EmpleadoControlador : Controller
     {
+        private readonly string connectionString;
+
+        public EmpleadoControlador(IConfiguration configuration)
+        {
+            connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
         public IActionResult Index()
         {
             return View();
