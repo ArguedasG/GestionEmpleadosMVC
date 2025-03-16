@@ -6,6 +6,8 @@ namespace GestionEmpleadosMVC.Controllers
 {
     public class EmpleadoControlador : Controller
     {
+        private readonly EmpleadoModel empleado;
+
         private readonly string connectionString;
 
         public EmpleadoControlador(IConfiguration configuration)
@@ -15,6 +17,7 @@ namespace GestionEmpleadosMVC.Controllers
 
         public IActionResult Index()
         {
+            List<Empleado> empleados = empleado.ObtenerEmpleados();
             return View();
         }
 
