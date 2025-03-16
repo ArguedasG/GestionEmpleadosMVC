@@ -16,4 +16,16 @@ public class EmpleadoModel
     {
         connectionString = configuration.GetConnectionString("DefaultConnection");
     }
+
+    public List<Empleado> ObtenerEmpleados() 
+    {
+        List<Empleado> empleados = new List<Empleado>();
+        return empleados;
+    }
+
+    public int InsertarEmpleado(string nombre, SqlMoney salario)
+    {
+        return 0;
+    }
+
 }
