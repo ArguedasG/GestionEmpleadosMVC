@@ -8,7 +8,7 @@ public class Empleado
 {
     public int id { get; set; }
     public string Nombre { get; set; }
-    public SqlMoney Salario { get; set; }
+    public decimal Salario { get; set; }
 }
 
 public class EmpleadoModel
@@ -48,7 +48,7 @@ public class EmpleadoModel
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@Nombre", nombre);
-            command.Parameters.AddWithValue("@Salario", salario);
+            command.Parameters.AddWithValue("@Salario", (SqlMoney)salario);
 
             SqlParameter Resultado = new SqlParameter("@Resultado", SqlDbType.Int) { Direction = ParameterDirection.Output };
             command.Parameters.Add(Resultado);

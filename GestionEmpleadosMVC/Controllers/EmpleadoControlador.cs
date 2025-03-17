@@ -23,7 +23,7 @@ namespace GestionEmpleadosMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(string Nombre, SqlMoney Salario)
+        public IActionResult Create(string Nombre, decimal Salario)
         {
             int Resultado = empleado.InsertarEmpleado(Nombre, Salario);
 
@@ -32,6 +32,7 @@ namespace GestionEmpleadosMVC.Controllers
             }
             else { 
                 ViewBag.Message = "Empleado creado con exito";
+                return RedirectToAction(nameof(Index)); // Redirigir al Index después de una inserción exitosa
             }
 
             return View();
