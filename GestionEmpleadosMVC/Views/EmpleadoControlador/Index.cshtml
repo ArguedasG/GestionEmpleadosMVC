@@ -1,0 +1,19 @@
+﻿@model List<Empleado>
+
+<h2>Lista de Empleados</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; border: 1px solid #000; padding: 10px;">
+
+    <div style="font-weight: bold; border-bottom: 1px solid #000; padding: 5px;">ID</div>
+    <div style="font-weight: bold; border-bottom: 1px solid #000; padding: 5px;">Nombre</div>
+    <div style="font-weight: bold; border-bottom: 1px solid #000; padding: 5px;">Salario</div>
+
+    @foreach (var emp in Model)
+    {
+        <div style="padding: 5px;">@emp.id</div>
+        <div style="padding: 5px;">@emp.Nombre</div>
+        <div style="padding: 5px;">@emp.Salario</div>
+    }
+</div>
+
+<a href="/Empleado/Agregar">Insertar Empleado</a>
