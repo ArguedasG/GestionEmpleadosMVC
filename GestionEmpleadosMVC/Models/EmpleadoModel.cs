@@ -32,7 +32,7 @@ public class EmpleadoModel
                 {
                     id = Convert.ToInt32(reader["id"]),
                     Nombre = reader["Nombre"].ToString(),
-                    Salario = (SqlMoney)reader["Salario"]
+                    Salario = Convert.ToDecimal(reader["Salario"])
                 });
             }
         }
