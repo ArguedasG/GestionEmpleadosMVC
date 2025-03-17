@@ -32,7 +32,6 @@ namespace GestionEmpleadosMVC.Controllers
             }
             else { 
                 ViewBag.Message = "Empleado creado con exito";
-                return RedirectToAction(nameof(Index)); // Redirigir al Index después de una inserción exitosa
             }
 
             return View();
