@@ -9,7 +9,7 @@ namespace GestionEmpleadosMVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "EmpleadoControlador");
         }
 
         public IActionResult Privacy()
