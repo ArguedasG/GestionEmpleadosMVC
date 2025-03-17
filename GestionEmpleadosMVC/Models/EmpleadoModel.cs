@@ -13,12 +13,7 @@ public class Empleado
 
 public class EmpleadoModel
 {
-    private readonly string connectionString;
-
-    public EmpleadoModel(IConfiguration configuration)
-    {
-        connectionString = configuration.GetConnectionString("DefaultConnection");
-    }
+    private readonly string connectionString = "Server=mssql-193245-0.cloudclusters.net,10068;Database=BaseNumero1;User Id=Daniel;Password=Daniel300924;TrustServerCertificate=True;";
 
     public List<Empleado> ObtenerEmpleados() 
     {

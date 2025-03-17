@@ -8,14 +8,7 @@ namespace GestionEmpleadosMVC.Controllers
 {
     public class EmpleadoControlador : Controller
     {
-        private readonly EmpleadoModel empleado;
-
-        private readonly string connectionString;
-
-        public EmpleadoControlador(IConfiguration configuration)
-        {
-            connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
+        private readonly EmpleadoModel empleado = new EmpleadoModel();
 
         public IActionResult Index()
         {
